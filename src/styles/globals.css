@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light/Dark theme styles */
+@layer base {
+  html {
+    color-scheme: light dark;
+  }
+  
+  body {
+    @apply bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100;
+  }
+  
+  /* Underlined links */
+  a {
+    @apply underline underline-offset-4 decoration-gray-400 hover:decoration-gray-600 dark:decoration-gray-500 dark:hover:decoration-gray-300;
+  }
+}

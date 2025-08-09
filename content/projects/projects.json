@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "arm-bot",
+    "title": "Desktop 6-Axis Robotic Arm",
+    "url": "https://github.com/zachrempell/arm-bot",
+    "summary": "A 3D printed, desktop-sized robotic arm capable of lifting ~1.5 lb. Features 6 degrees of freedom and custom control software.",
+    "tech": ["Fusion 360", "STM32", "C++", "Python", "3D Printing"]
+  },
+  {
+    "slug": "task-tracker",
+    "title": "Minimal Task Tracker",
+    "url": "https://github.com/zachrempell/task-tracker",
+    "summary": "A clean, distraction-free task management app built with React and TypeScript. Focuses on simplicity and keyboard shortcuts.",
+    "tech": ["React", "TypeScript", "Tailwind CSS", "Local Storage"]
+  },
+  {
+    "slug": "cv-playground",
+    "title": "Computer Vision Playground",
+    "url": "https://github.com/zachrempell/cv-playground",
+    "summary": "Collection of computer vision experiments and demos using OpenCV and Python. Includes object detection, face recognition, and more.",
+    "tech": ["Python", "OpenCV", "NumPy", "Streamlit"]
+  }
+]
