@@ -1,7 +1,8 @@
 
 ### I'm always interested in hearing about new opportunities, interesting projects, or just having a chat about technology.
 
-Email me at [hello@zachrempell.com](mailto:hello@zachrempell.com)
+
+Email me at [zrempell@gmail.com](zrempell@gmail.com)
 
 View my [Resume](/resume.pdf)
 

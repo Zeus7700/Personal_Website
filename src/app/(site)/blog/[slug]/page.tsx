@@ -60,7 +60,7 @@ export default async function BlogPostPage({
               </Link>
               <h1 className="text-2xl font-medium" style={{ color: 'var(--text-primary)' }}>{post.title}</h1>
             </div>
-            <p className="text-sm mb-4" style={{ color: 'var(--text-muted)' }}>
+            <p className="text-sm mb-4" style={{ color: 'var(--accent-hover)' }}>
               {new Date(post.date).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',

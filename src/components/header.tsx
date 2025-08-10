@@ -8,7 +8,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-center">
           <Link 
             href="/" 
-            className="text-lg font-medium transition-colors text-[var(--text-primary)] hover:text-[var(--accent-hover)]"
+            className="text-2xl font-large transition-colors text-[var(--text-primary)] hover:text-[var(--accent-hover)]"
           >
             Zack Rempell
           </Link>
