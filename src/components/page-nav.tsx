@@ -26,10 +26,10 @@ export function PageNav() {
           <Link
             key={href}
             href={href}
-            className={`text-sm transition-colors ${
+            className={`text-base transition-colors ${
               isActive(href)
                 ? 'text-[var(--nav-active)]'
-                : 'text-[var(--text-muted)] hover:text-[var(--accent-hover)]'
+                : 'text-[var(--text-primary)] hover:text-[var(--accent-hover)]'
             }`}
           >
             {label}

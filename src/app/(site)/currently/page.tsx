@@ -12,7 +12,7 @@ export default async function CurrentlyPage() {
   const content = await getMarkdownContent('currently.md')
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'var(--background)', color: 'var(--text-secondary)' }}>
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--background)', color: 'var(--text-primary)' }}>
       <Container className="py-16 max-w-2xl">
         <PageNav />
         <Prose>

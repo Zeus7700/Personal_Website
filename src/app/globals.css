@@ -86,13 +86,13 @@ body {
 }
 
 .markdown-content p {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   margin-bottom: 1rem;
   line-height: 1.7;
 }
 
 .markdown-content a {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-decoration: underline;
   text-decoration-color: var(--text-muted);
   transition: all 0.2s;
@@ -105,6 +105,14 @@ body {
 
 /* External links styling */
 .markdown-content a[href^="http"]:after {
+  content: " ↗";
+}
+
+/* File links styling */
+.markdown-content a[href$=".pdf"]:after,
+.markdown-content a[href$=".doc"]:after,
+.markdown-content a[href$=".docx"]:after,
+.markdown-content a[href$=".zip"]:after {
   content: " ↗";
 }
 
