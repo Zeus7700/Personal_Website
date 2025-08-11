@@ -12,13 +12,27 @@ export function AnimatedText({ text, className = '' }: AnimatedTextProps) {
   const [displayText, setDisplayText] = useState(firstChar)
   const [isHovered, setIsHovered] = useState(false)
   const [isExpanding, setIsExpanding] = useState(false)
-  const [currentIndex, setCurrentIndex] = useState(1) // Start at 1 since we show first char by default
+  const [currentIndex, setCurrentIndex] = useState(1)
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  
+  // Check for dark mode preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    setIsDarkMode(mediaQuery.matches)
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsDarkMode(e.matches)
+    }
+    
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
   
   // Handle hover state
   useEffect(() => {
     if (isHovered) {
       setIsExpanding(true)
-      setCurrentIndex(1) // Start from second character
+      setCurrentIndex(1)
     } else {
       // Start collapsing
       setCurrentIndex(1)
@@ -35,11 +49,16 @@ export function AnimatedText({ text, className = '' }: AnimatedTextProps) {
       const timeout = setTimeout(() => {
         setDisplayText(text.slice(0, currentIndex + 1))
         setCurrentIndex(prev => prev + 1)
-      }, 50) // Speed of letter appearance
+      }, 50)
       
       return () => clearTimeout(timeout)
     }
   }, [currentIndex, isExpanding, isHovered, text])
+
+  // Set the color based on hover state and theme
+  const textColor = isHovered 
+    ? (isDarkMode ? '#abdbe3' : '#5d9aa5')
+    : 'var(--text-muted)'
 
   return (
     <span 
@@ -51,7 +70,7 @@ export function AnimatedText({ text, className = '' }: AnimatedTextProps) {
         verticalAlign: 'bottom',
         height: '1.2em',
         alignItems: 'flex-end',
-        color: isHovered ? 'var(--accent-hover)' : 'var(--text-muted)',
+        color: textColor,
         transition: 'color 0.2s ease-in-out'
       }}
     >
@@ -64,7 +83,7 @@ export function AnimatedText({ text, className = '' }: AnimatedTextProps) {
             overflow: 'hidden',
             whiteSpace: 'pre',
             transition: 'all 0.2s ease-in-out',
-            opacity: isHovered || index === 0 ? 1 : 0, // Always show first character
+            opacity: isHovered || index === 0 ? 1 : 0,
             transform: (isHovered || index === 0) ? 'translateY(0)' : 'translateY(0.5em)',
             transitionDelay: isHovered ? `${index * 0.05}s` : '0s'
           }}
