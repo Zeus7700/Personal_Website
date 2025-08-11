@@ -10,6 +10,27 @@ const nextConfig = {
   experimental: {
     mdxRs: false,
   },
+  images: {
+    // Allow images from all domains
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+  },
+  // This makes sure that files in the content directory are served
+  webpack: (config, { isServer }) => {
+    // This makes it so that files in the content directory are treated as static assets
+    config.module.rules.push({
+      test: /\.(png|jpe?g|gif|svg|webp|avif)$/i,
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/media/[name].[hash][ext]',
+      },
+    });
+    return config;
+  },
 }
 
 const withMDX = createMDX({

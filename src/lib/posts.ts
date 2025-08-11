@@ -53,7 +53,15 @@ export async function getAllPosts(): Promise<Post[]> {
       const validatedFrontmatter = frontmatterSchema.parse(frontmatter)
       
       // Parse markdown content to HTML
-      const htmlContent = await marked(content)
+      let htmlContent = await marked(content)
+      
+      // Add target and rel attributes to all links
+      htmlContent = htmlContent.replace(/<a(.*?)>/g, (match, p1) => {
+        // Skip if already has target attribute
+        if (/target\s*=/.test(p1)) return match;
+        // Add target and rel attributes
+        return `<a${p1} target="_blank" rel="noopener noreferrer">`;
+      })
       
       // Calculate read time (average 200 words per minute)
       const wordCount = content.split(/\s+/).length
