@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Container } from './container'
 import { ExternalLink } from './external-link'
@@ -10,6 +12,16 @@ export function Footer() {
           <Link 
             href="/" 
             className="text-sm font-medium transition-colors text-[var(--text-muted)] hover:text-[var(--accent-hover)]"
+            style={{
+              position: 'relative',
+              display: 'inline-block'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.textContent = 'Zack Rempell';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.textContent = 'Z';
+            }}
           >
             Z
           </Link>
