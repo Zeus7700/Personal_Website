@@ -13,20 +13,6 @@ export function AnimatedText({ text, className = '' }: AnimatedTextProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [isExpanding, setIsExpanding] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(1)
-  const [isDarkMode, setIsDarkMode] = useState(false)
-  
-  // Check for dark mode preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    setIsDarkMode(mediaQuery.matches)
-    
-    const handleChange = (e: MediaQueryListEvent) => {
-      setIsDarkMode(e.matches)
-    }
-    
-    mediaQuery.addEventListener('change', handleChange)
-    return () => mediaQuery.removeEventListener('change', handleChange)
-  }, [])
   
   // Handle hover state
   useEffect(() => {
@@ -55,10 +41,8 @@ export function AnimatedText({ text, className = '' }: AnimatedTextProps) {
     }
   }, [currentIndex, isExpanding, isHovered, text])
 
-  // Set the color based on hover state and theme
-  const textColor = isHovered 
-    ? (isDarkMode ? '#abdbe3' : '#4f838d')
-    : 'var(--text-muted)'
+  // Set the color based on hover state
+  const textColor = isHovered ? 'var(--accent)' : 'var(--text-muted)'
 
   return (
     <span 
