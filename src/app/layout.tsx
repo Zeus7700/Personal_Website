@@ -3,26 +3,26 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Zack Rempell",
-  description: "Software engineer passionate about building meaningful technology. Portfolio, blog, and projects.",
+  description: "Engineer passionate about building meaningful technology. Portfolio, blog, and projects.",
   authors: [{ name: "Zack Rempell" }],
   creator: "Zack Rempell",
   icons: {
-    icon: '/z-logo.svg',
-    shortcut: '/z-logo.svg',
-    apple: '/z-logo.svg',
+    icon: '/z-favicon.svg',
+    shortcut: '/z-favicon.svg',
+    apple: '/z-favicon.svg',
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://zachrempell.com",
+    url: "https://zackrempell.com",
     title: "Zack Rempell",
-    description: "Software engineer passionate about building meaningful technology.",
+    description: "Engineer passionate about building meaningful technology.",
     siteName: "Zack Rempell",
   },
   twitter: {
     card: "summary_large_image",
     title: "Zack Rempell",
-    description: "Software engineer passionate about building meaningful technology.",
+    description: "Engineer passionate about building meaningful technology.",
     creator: "@zachrempell",
   },
 };
