@@ -15,14 +15,14 @@ export default async function BlogPage() {
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background)', color: 'var(--text-primary)' }}>
       <Container className="py-16 max-w-2xl">
         <PageNav />
-        <div className="space-y-4">
+        <div className="markdown-content space-y-4">
           {posts.map((post) => (
             <div key={post.slug}>
               <Link 
                 href={`/blog/${post.slug}`}
-                className="underline transition-colors text-[var(--text-secondary)] decoration-[var(--text-muted)] hover:text-[var(--accent-hover)] hover:decoration-[var(--accent-hover)]"
+                className="relative whitespace-nowrap"
               >
-                {post.title} ↗
+                {post.title}
               </Link>
               <span className="text-sm ml-8" style={{ color: 'var(--text-muted)' }}>
                 {new Date(post.date).toLocaleDateString('en-US', {

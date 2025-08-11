@@ -8,7 +8,7 @@ export function PageNav() {
   const pathname = usePathname()
 
   const navItems = [
-    { href: '/', label: 'About' },
+    { href: '/', label: 'Home' },
     { href: '/currently', label: 'Currently' },
     { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },

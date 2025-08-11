@@ -73,12 +73,12 @@ export default async function BlogPostPage({
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </Prose>
           
-          <footer className="mt-16 pt-8 border-t border-[var(--border)]">
+          <footer className="mt-16 pt-8 border-t border-[var(--accent-hover)]">
             <div className="text-sm" style={{ color: 'var(--text-muted)' }}>
               <p className="mb-4">RELATED</p>
               <div className="space-y-2">
                 <div>
-                  <Link href="/blog" className="underline hover:no-underline transition-all text-[var(--text-secondary)] hover:text-[var(--accent-hover)]">
+                  <Link href="/blog" className="underline transition-all text-[var(--text-secondary)] hover:text-[var(--accent-hover)]">
                     More posts ↗
                   </Link>
                   <span className="ml-4">All posts</span>

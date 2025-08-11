@@ -95,12 +95,29 @@ body {
   color: var(--text-primary);
   text-decoration: underline;
   text-decoration-color: var(--text-muted);
+  text-underline-offset: 4px;
   transition: all 0.2s;
+  position: relative;
+  white-space: nowrap;
+}
+
+.markdown-content a::after {
+  content: '→';
+  display: inline-block;
+  margin-left: 0.25em;
+  transform: translateY(0.1em);
+  font-size: 0.85em;
+  opacity: 0.9;
+  transition: transform 0.2s ease;
+}
+
+.markdown-content a:hover::after {
+  transform: translate(2px, 0.1em);
 }
 
 .markdown-content a:hover {
-  color: var(--accent-hover);
-  text-decoration-color: var(--accent-hover);
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
 /* External links styling */
@@ -116,13 +133,31 @@ body {
   content: " ↗";
 }
 
-.markdown-content ul {
-  margin-bottom: 1rem;
-  padding-left: 1.5rem;
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+  list-style-type: disc;
+}
+
+.markdown-content ol {
+  list-style-type: decimal;
 }
 
 .markdown-content li {
   color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+  padding-left: 0.5rem;
+}
+
+.markdown-content li > p {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content li > ul,
+.markdown-content li > ol {
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 

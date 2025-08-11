@@ -1,18 +1,19 @@
+## Who I Am
 
-## About
+I am a mechanical engineer with a passion for building and creating. This page is where I share more about my background, interests, and journey in engineering.
 
-Hi! I'm Zack.
+## Background
 
-I am a mechanical engineer and a passionate tinkerer. Let's make some cool stuff!
+I am currently finishing my education at the University of Colorado Boulder with a degree in Mechanical Engineering and a minor in Engineering Management. My academic journey has given me a strong foundation in problem-solving and technical skills that I love applying to real-world challenges.
 
-## Work
+## Interests
 
-Finishing school at [CU Boulder](https://www.colorado.edu/)  
-Recently worked for [Creation Technologies](https://www.creationtech.com/)  
-learned alot from [RADAR](https://goradar.com/)  
-Built robots for [VEX](https://www.vex.com/) with [Robot Revolution](https://robotrevolution.net/)  
-Learn more about me [Here](/resume.pdf)
+- Mechanical Design
+- Robotics
+- Product Development
+- 3D Printing
+- DIY Projects
 
-## Projects
+## Get in Touch
 
-Coming soon...
+Feel free to reach out through the [contact page](/contact) if you'd like to connect or learn more about my work.
