@@ -57,7 +57,7 @@ export function AnimatedText({ text, className = '' }: AnimatedTextProps) {
 
   // Set the color based on hover state and theme
   const textColor = isHovered 
-    ? (isDarkMode ? '#abdbe3' : '#5d9aa5')
+    ? (isDarkMode ? '#abdbe3' : '#4f838d')
     : 'var(--text-muted)'
 
   return (
