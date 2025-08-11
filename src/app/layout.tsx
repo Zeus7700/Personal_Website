@@ -2,21 +2,26 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Zach Rempell",
+  title: "Zack Rempell",
   description: "Software engineer passionate about building meaningful technology. Portfolio, blog, and projects.",
-  authors: [{ name: "Zach Rempell" }],
-  creator: "Zach Rempell",
+  authors: [{ name: "Zack Rempell" }],
+  creator: "Zack Rempell",
+  icons: {
+    icon: '/z-logo.svg',
+    shortcut: '/z-logo.svg',
+    apple: '/z-logo.svg',
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://zachrempell.com",
-    title: "Zach Rempell",
+    title: "Zack Rempell",
     description: "Software engineer passionate about building meaningful technology.",
-    siteName: "Zach Rempell",
+    siteName: "Zack Rempell",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zach Rempell",
+    title: "Zack Rempell",
     description: "Software engineer passionate about building meaningful technology.",
     creator: "@zachrempell",
   },
