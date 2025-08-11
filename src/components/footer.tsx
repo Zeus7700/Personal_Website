@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Container } from './container'
 import { ExternalLink } from './external-link'
+import { AnimatedText } from './animated-text'
 
 export function Footer() {
   return (
@@ -16,17 +17,11 @@ export function Footer() {
               position: 'relative',
               display: 'inline-block'
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.textContent = 'Zack Rempell';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.textContent = 'Z';
-            }}
           >
-            Z
+            <AnimatedText text="Zack Rempell" />
           </Link>
           <div className="flex items-center space-x-4 text-xs">
-            <ExternalLink href="www.linkedin.com/in/zachary-rempell">
+            <ExternalLink href="https://www.linkedin.com/in/zachary-rempell">
               LinkedIn
             </ExternalLink>
             <ExternalLink href="/resume.pdf">

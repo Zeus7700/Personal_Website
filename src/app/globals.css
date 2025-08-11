@@ -131,6 +131,32 @@ body {
   font-weight: 600;
 }
 
+/* Text selection highlight color matching accent */
+::selection {
+  background-color: var(--accent);
+  color: var(--background);
+}
+
+::-moz-selection {
+  background-color: var(--accent);
+  color: var(--background);
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.5em);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 0.5s ease infinite;
+  display: inline-block;
+}
+
 /* Smooth transitions for theme changes */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
