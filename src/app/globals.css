@@ -2,11 +2,11 @@
 
 :root {
   /* Light theme colors */
-  --background: #000000;
+  --background: #e4dfdb;
   --surface: #1a1a1a;
   --border: #333333;
-  --text-primary: #ffffff;
-  --text-secondary: #d1d5db;
+  --text-primary: #000000;
+  --text-secondary: #424344;
   --text-muted: #9ca3af;
   --text-subtle: #6b7280;
   --accent: #4f838d;
@@ -94,7 +94,7 @@ body {
 .markdown-content a {
   color: var(--text-primary);
   text-decoration: underline;
-  text-decoration-color: var(--text-muted);
+  text-decoration-color: var(--text-primary);
   text-underline-offset: 4px;
   transition: all 0.2s;
   position: relative;

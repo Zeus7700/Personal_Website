@@ -24,7 +24,7 @@ export default async function BlogPage() {
               >
                 {post.title}
               </Link>
-              <span className="text-sm ml-8" style={{ color: 'var(--text-muted)' }}>
+              <span className="text-sm ml-4" style={{ color: 'var(--text-primary)' }}>
                 {new Date(post.date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'short',
