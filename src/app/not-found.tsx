@@ -14,7 +14,7 @@ export default function NotFound() {
     <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--background)', color: 'var(--text-primary)' }}>
       <main className="mx-auto max-w-2xl p-8 space-y-4 text-center">
         <h1 className="text-2xl font-semibold">404 - Page Not Found</h1>
-        <p>Sorry, we couldn't find the page you're looking for.</p>
+        <p>Sorry, we couldn&apos;t find the page you&apos;re looking for.</p>
         <Link
           href="/"
           className="inline-block rounded-md border px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"

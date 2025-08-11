@@ -12,18 +12,22 @@ export async function getMarkdownContent(filename: string): Promise<string> {
   
   const fileContent = fs.readFileSync(filePath, 'utf8')
   let htmlContent = await marked(fileContent)
-  
-  // Post-process HTML to add target="_blank" to external links and PDFs
+
+  // Add target="_blank" to external links and PDFs when missing
   htmlContent = htmlContent.replace(
-    /<a href="(https?:\/\/[^"]+)"([^>]*)>/g,
-    '<a href="$1" target="_blank" rel="noopener noreferrer"$2>'
+    /<a href="([^"]+)"([^>]*)>/g,
+    (match, href, attrs) => {
+      const isExternal = /^https?:\/\//.test(href)
+      const isPdf = href.toLowerCase().endsWith('.pdf')
+      const hasTarget = /target\s*=/.test(attrs)
+
+      if ((isExternal || isPdf) && !hasTarget) {
+        return `<a href="${href}" target="_blank" rel="noopener noreferrer"${attrs}>`
+      }
+
+      return match
+    }
   )
-  
-  // Add target="_blank" to PDF links
-  htmlContent = htmlContent.replace(
-    /<a href="([^"]*\.pdf)"([^>]*)>/g,
-    '<a href="$1" target="_blank" rel="noopener noreferrer"$2>'
-  )
-  
+
   return htmlContent
 }
