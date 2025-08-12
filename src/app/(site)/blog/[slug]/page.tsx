@@ -49,8 +49,8 @@ export default async function BlogPostPage({
       <Container className="py-16 max-w-2xl">
         <PageNav />
         <article>
-          <header className="mb-12">
-            <div className="flex items-center gap-2 mb-6">
+          <header className="mb-6">
+            <div className="flex items-center gap-2 mb-3">
               <Link 
                 href="/blog"
                 className="text-[var(--text-muted)] hover:text-[var(--accent-hover)] transition-colors"
@@ -60,7 +60,7 @@ export default async function BlogPostPage({
               </Link>
               <h1 className="text-2xl font-medium" style={{ color: 'var(--text-primary)' }}>{post.title}</h1>
             </div>
-            <p className="text-sm mb-4" style={{ color: 'var(--accent-hover)' }}>
+            <p className="text-base" style={{ color: 'var(--accent-hover)' }}>
               {new Date(post.date).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
