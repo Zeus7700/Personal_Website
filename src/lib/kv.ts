@@ -1,4 +1,16 @@
-import { kv } from '@vercel/kv'
+import { createClient } from 'redis'
+
+let redis: ReturnType<typeof createClient> | null = null
+
+async function getRedisClient() {
+  if (!redis) {
+    redis = createClient({
+      url: process.env.REDIS_URL
+    })
+    await redis.connect()
+  }
+  return redis
+}
 
 export interface ViewData {
   views: number
@@ -11,8 +23,9 @@ export interface VoteData {
 
 export async function getViewCount(slug: string): Promise<number> {
   try {
-    const count = await kv.get<number>(`views:${slug}`)
-    return count || 0
+    const client = await getRedisClient()
+    const count = await client.get(`views:${slug}`)
+    return count ? parseInt(count) : 0
   } catch (error) {
     console.error('Error getting view count:', error)
     return 0
@@ -21,7 +34,8 @@ export async function getViewCount(slug: string): Promise<number> {
 
 export async function incrementViewCount(slug: string): Promise<number> {
   try {
-    const count = await kv.incr(`views:${slug}`)
+    const client = await getRedisClient()
+    const count = await client.incr(`views:${slug}`)
     return count
   } catch (error) {
     console.error('Error incrementing view count:', error)
@@ -31,9 +45,13 @@ export async function incrementViewCount(slug: string): Promise<number> {
 
 export async function getVoteCounts(slug: string): Promise<VoteData> {
   try {
-    const likes = await kv.get<number>(`votes:${slug}:likes`) || 0
-    const dislikes = await kv.get<number>(`votes:${slug}:dislikes`) || 0
-    return { likes, dislikes }
+    const client = await getRedisClient()
+    const likes = await client.get(`votes:${slug}:likes`) || '0'
+    const dislikes = await client.get(`votes:${slug}:dislikes`) || '0'
+    return { 
+      likes: parseInt(likes), 
+      dislikes: parseInt(dislikes) 
+    }
   } catch (error) {
     console.error('Error getting vote counts:', error)
     return { likes: 0, dislikes: 0 }
@@ -42,23 +60,24 @@ export async function getVoteCounts(slug: string): Promise<VoteData> {
 
 export async function updateVote(slug: string, vote: 'like' | 'dislike', action: 'add' | 'remove'): Promise<VoteData> {
   try {
+    const client = await getRedisClient()
     const key = `votes:${slug}:${vote}s`
     
     if (action === 'add') {
       // Increment the selected vote
-      await kv.incr(key)
+      await client.incr(key)
       
       // Decrement the opposite vote if it exists
       const oppositeKey = `votes:${slug}:${vote === 'like' ? 'dislikes' : 'likes'}`
-      const oppositeCount = await kv.get<number>(oppositeKey) || 0
-      if (oppositeCount > 0) {
-        await kv.decr(oppositeKey)
+      const oppositeCount = await client.get(oppositeKey) || '0'
+      if (parseInt(oppositeCount) > 0) {
+        await client.decr(oppositeKey)
       }
     } else {
       // Decrement the vote
-      const count = await kv.get<number>(key) || 0
-      if (count > 0) {
-        await kv.decr(key)
+      const count = await client.get(key) || '0'
+      if (parseInt(count) > 0) {
+        await client.decr(key)
       }
     }
     
