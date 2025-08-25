@@ -12,35 +12,9 @@ async function getRedisClient() {
   return redis
 }
 
-export interface ViewData {
-  views: number
-}
-
 export interface VoteData {
   likes: number
   dislikes: number
-}
-
-export async function getViewCount(slug: string): Promise<number> {
-  try {
-    const client = await getRedisClient()
-    const count = await client.get(`views:${slug}`)
-    return count ? parseInt(count) : 0
-  } catch (error) {
-    console.error('Error getting view count:', error)
-    return 0
-  }
-}
-
-export async function incrementViewCount(slug: string): Promise<number> {
-  try {
-    const client = await getRedisClient()
-    const count = await client.incr(`views:${slug}`)
-    return count
-  } catch (error) {
-    console.error('Error incrementing view count:', error)
-    return 0
-  }
 }
 
 export async function getVoteCounts(slug: string): Promise<VoteData> {

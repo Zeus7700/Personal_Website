@@ -4,7 +4,6 @@ import { Container } from '@/components/container'
 import { PageNav } from '@/components/page-nav'
 import { Prose } from '@/components/prose'
 import { ReactionButtons } from '@/components/reaction-buttons'
-import { ViewTracker } from '@/components/view-tracker'
 import { getAllPosts, getPostBySlug } from '@/lib/posts'
 import { Metadata } from 'next'
 
@@ -48,7 +47,6 @@ export default async function BlogPostPage({
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background)', color: 'var(--text-secondary)' }}>
-      <ViewTracker postSlug={slug} />
       <Container className="py-16 max-w-2xl">
         <PageNav />
         <article>
