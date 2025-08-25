@@ -55,6 +55,15 @@ export async function getAllPosts(): Promise<Post[]> {
       // Parse markdown content to HTML
       let htmlContent = await marked(content)
       
+      // Process image paths to point to the correct location
+      htmlContent = htmlContent.replace(/<img([^>]+)src="([^"]*)"([^>]*)>/g, (match, before, src, after) => {
+        // If the image path starts with images/, update it to point to the blog images folder
+        if (src.startsWith('images/')) {
+          return `<img${before}src="/blog-images/${src.replace('images/', '')}"${after}>`;
+        }
+        return match;
+      })
+      
       // Add target and rel attributes to all links
       htmlContent = htmlContent.replace(/<a(.*?)>/g, (match, p1) => {
         // Skip if already has target attribute

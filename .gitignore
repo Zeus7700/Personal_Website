@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# blog images (copied from content/blog/images)
+/public/blog-images/
+
+# vote data
+/data/

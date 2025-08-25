@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { Container } from '@/components/container'
 import { PageNav } from '@/components/page-nav'
 import { Prose } from '@/components/prose'
+import { ReactionButtons } from '@/components/reaction-buttons'
+import { ViewTracker } from '@/components/view-tracker'
 import { getAllPosts, getPostBySlug } from '@/lib/posts'
 import { Metadata } from 'next'
 
@@ -46,6 +48,7 @@ export default async function BlogPostPage({
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background)', color: 'var(--text-secondary)' }}>
+      <ViewTracker postSlug={slug} />
       <Container className="py-16 max-w-2xl">
         <PageNav />
         <article>
@@ -74,16 +77,19 @@ export default async function BlogPostPage({
           </Prose>
           
           <footer className="mt-16 pt-8 border-t border-[var(--accent-hover)]">
-            <div className="text-sm" style={{ color: 'var(--text-muted)' }}>
-              <p className="mb-4">RELATED</p>
-              <div className="space-y-2">
-                <div>
-                  <Link href="/blog" className="underline transition-all text-[var(--text-secondary)] hover:text-[var(--accent-hover)]">
-                    More posts ↗
-                  </Link>
-                  <span className="ml-4">All posts</span>
+            <div className="flex justify-between items-start">
+              <div className="text-sm" style={{ color: 'var(--text-muted)' }}>
+                <p className="mb-4">RELATED</p>
+                <div className="space-y-2">
+                  <div>
+                    <Link href="/blog" className="underline transition-all text-[var(--text-secondary)] hover:text-[var(--accent-hover)]">
+                      More posts ↗
+                    </Link>
+                    <span className="ml-4">All posts</span>
+                  </div>
                 </div>
               </div>
+              <ReactionButtons postSlug={slug} />
             </div>
           </footer>
         </article>
