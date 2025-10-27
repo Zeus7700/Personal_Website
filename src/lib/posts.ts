@@ -7,12 +7,14 @@ const frontmatterSchema = z.object({
   title: z.string(),
   description: z.string(),
   date: z.string(),
+  tags: z.string().optional(),
 })
 
 export type Post = z.infer<typeof frontmatterSchema> & {
   slug: string
   content: string
   readTime: number
+  tagsArray: string[]
 }
 
 export async function getAllPosts(): Promise<Post[]> {
@@ -76,10 +78,16 @@ export async function getAllPosts(): Promise<Post[]> {
       const wordCount = content.split(/\s+/).length
       const readTime = Math.ceil(wordCount / 200)
       
+      // Process tags
+      const tagsArray = validatedFrontmatter.tags 
+        ? validatedFrontmatter.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
+        : []
+      
       return {
         slug,
         content: htmlContent,
         readTime,
+        tagsArray,
         ...validatedFrontmatter,
       }
     })
@@ -92,4 +100,15 @@ export async function getAllPosts(): Promise<Post[]> {
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   const posts = await getAllPosts()
   return posts.find(post => post.slug === slug) || null
+}
+
+export async function getPostsByTag(tag: string): Promise<Post[]> {
+  const posts = await getAllPosts()
+  return posts.filter(post => post.tagsArray.includes(tag))
+}
+
+export async function getAllTags(): Promise<string[]> {
+  const posts = await getAllPosts()
+  const allTags = posts.flatMap(post => post.tagsArray)
+  return [...new Set(allTags)].sort()
 }

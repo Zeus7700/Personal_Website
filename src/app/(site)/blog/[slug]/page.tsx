@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { Container } from '@/components/container'
 import { PageNav } from '@/components/page-nav'
 import { Prose } from '@/components/prose'
-import { ReactionButtons } from '@/components/reaction-buttons'
 import { getAllPosts, getPostBySlug } from '@/lib/posts'
 import { Metadata } from 'next'
 
@@ -75,19 +74,39 @@ export default async function BlogPostPage({
           </Prose>
           
           <footer className="mt-16 pt-8 border-t border-[var(--accent-hover)]">
-            <div className="flex justify-between items-start">
-              <div className="text-sm" style={{ color: 'var(--text-muted)' }}>
-                <p className="mb-4">RELATED</p>
-                <div className="space-y-2">
+            {/* Tags Section */}
+            {post.tagsArray && post.tagsArray.length > 0 && (
+              <div className="mb-8">
+                <div className="text-sm" style={{ color: 'var(--text-muted)' }}>
+                  <p className="mb-4">TAGS</p>
                   <div>
-                    <Link href="/blog" className="underline transition-all text-[var(--text-secondary)] hover:text-[var(--accent-hover)]">
-                      More posts ↗
-                    </Link>
-                    <span className="ml-4">All posts</span>
+                    {post.tagsArray.map((tag, index) => (
+                      <span key={tag}>
+                        <Link
+                          href={`/blog?tag=${encodeURIComponent(tag)}`}
+                          className="text-[var(--text-secondary)] hover:text-[var(--accent-hover)] transition-colors duration-200"
+                        >
+                          {tag}
+                        </Link>
+                        {index < post.tagsArray.length - 1 && <span className="text-[var(--text-muted)]">, </span>}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
-              <ReactionButtons postSlug={slug} />
+            )}
+            
+            {/* Related Section */}
+            <div className="text-sm" style={{ color: 'var(--text-muted)' }}>
+              <p className="mb-4">RELATED</p>
+              <div className="space-y-2">
+                <div>
+                  <Link href="/blog" className="underline transition-all text-[var(--text-secondary)] hover:text-[var(--accent-hover)]">
+                    More posts ↗
+                  </Link>
+                  <span className="ml-4">All posts</span>
+                </div>
+              </div>
             </div>
           </footer>
         </article>
