@@ -19,3 +19,5 @@ Youtube - [Theo - t3․gg](https://www.youtube.com/@t3dotgg)
 
 ## Learning
 
+Vibe Coding Tools - [Cursor](https://cursor.com/)\
+French - [Duolingo](https://www.duolingo.com/)
