@@ -7,8 +7,8 @@ Kazuo Ishiguro - [Klara and the Sun](https://www.goodreads.com/book/show/5412040
 
 ## Listening
 
-The Strokes - [This Is It](https://music.apple.com/us/album/is-this-it/266376953)  
-Radiohead - [Kid A](https://music.apple.com/us/album/kid-a/1097862870)  
+[Noah Kahan](https://music.apple.com/us/artist/noah-kahan/328583953)
+The Strokes - [This Is It](https://music.apple.com/us/album/is-this-it/266376953)\
 [Dominik Fike](https://music.apple.com/us/artist/dominic-fike/1104179033)  
 
 ## Watching
@@ -19,5 +19,5 @@ Youtube - [Theo - t3․gg](https://www.youtube.com/@t3dotgg)
 
 ## Learning
 
-Vibe Coding Tools - [Cursor](https://cursor.com/)\
+Vibe Coding Tools - [Cursor](https://cursor.com/) [Windsurf](https://windsurf.com/)\
 French - [Duolingo](https://www.duolingo.com/)
